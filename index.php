@@ -13,7 +13,12 @@ Author URI: http://www.michielkoning.nl
 
 require_once( __DIR__ . '/includes/install.php');
 require_once( __DIR__ . '/includes/admin.php');
+require_once( __DIR__ . '/includes/translations.php');
 
+function mk_forms_load_textdomain() {
+  load_plugin_textdomain( 'mk_forms', false, basename( dirname( __FILE__ ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'mk_forms_load_textdomain' );
 
 function contact__add($message, $type, &$name = '') {
 	global $wpdb;
